@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  flask:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - /home/master/Documents/passenfly/Files:/home/master/Documents/passenfly/Files
+  
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    ports: 
+      - '5672:5672'
+      - '15672:15672'

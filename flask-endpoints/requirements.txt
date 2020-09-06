@@ -1,0 +1,7 @@
+Flask
+flask-restx
+pika
+SQLAlchemy
+PyMySQL
+cryptography
+flask-sqlalchemy

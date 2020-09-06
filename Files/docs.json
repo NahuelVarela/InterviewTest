@@ -1,0 +1,199 @@
+{
+   "title":"Nahuel Passenfly Test",
+   "description":"This is the Flask server containing the endpoints from the excersie",
+   "version":"1.0",
+   "Available Methods":{
+      "schema":{
+         "create":{
+            "path":"/api/schema/create",
+            "description":"This method will update the table airports on the Database passenfly by reading a csv file.",
+            "accepts":"POST",
+            "variables":{
+               "file":{
+                  "type":"csv",
+                  "description":"The file we will use to update the table",
+                  "required":"True"
+               },
+               "name":{
+                  "type":"string",
+                  "description":"The name of the file when we store it",
+                  "required":"True"
+               }
+            }
+         }
+      },
+      "entry":{
+         "create":{
+            "path":"/api/entry/create",
+            "description":"This method will insert and entry in the database. It will fail if there is already the same entry in the db. Missing Attributes will be inserted as Null",
+            "accepts":"POST",
+            "variables":{
+               "id":{
+                  "type":"int",
+                  "description":"Unique ID of the entry",
+                  "required":"True"
+               },
+               "name":{
+                  "type":"string",
+                  "description":"Name of the Airport",
+                  "required":"False"
+               },
+               "city":{
+                  "type":"string",
+                  "description":"City of Airport",
+                  "required":"False"
+               },
+               "country":{
+                  "type":"string",
+                  "description":"Country of the Airport",
+                  "required":"False"
+               },
+               "iata":{
+                  "type":"string",
+                  "description":"Location identifier",
+                  "required":"False"
+               },
+               "icao":{
+                  "type":"string",
+                  "description":"Airport identifier",
+                  "required":"False"
+               },
+               "latitude":{
+                  "type":"float",
+                  "description":"Latitud Cordinate",
+                  "required":"False"
+               },
+               "longitude":{
+                  "type":"float",
+                  "description":"Longitude coordinate",
+                  "required":"False"
+               },
+               "altitude":{
+                  "type":"float",
+                  "description":"Altitude coordinate",
+                  "required":"False"
+               },
+               "timezone":{
+                  "type":"float",
+                  "description":"Timezone",
+                  "required":"False"
+               },
+               "DST":{
+                  "type":"string",
+                  "description":"DST Airport code",
+                  "required":"False"
+               },
+               "tz":{
+                  "type":"string",
+                  "description":"",
+                  "required":"False"
+               },
+               "type":{
+                  "type":"string",
+                  "description":"Type of location",
+                  "required":"False"
+               },
+               "source":{
+                  "type":"string",
+                  "description":"",
+                  "required":"False"
+               }
+            }
+         },
+         "update":{
+            "path":"/api/entry/update",
+            "description":"This method will update an entry in the database. It will only update the attributes that are specified in the body of the request.",
+            "accepts":"POST",
+            "variables":{
+               "id":{
+                  "type":"int",
+                  "description":"Unique ID of the entry",
+                  "required":"True"
+               },
+               "name":{
+                  "type":"string",
+                  "description":"Name of the Airport",
+                  "required":"False"
+               },
+               "city":{
+                  "type":"string",
+                  "description":"City of Airport",
+                  "required":"False"
+               },
+               "country":{
+                  "type":"string",
+                  "description":"Country of the Airport",
+                  "required":"False"
+               },
+               "iata":{
+                  "type":"string",
+                  "description":"Location identifier",
+                  "required":"False"
+               },
+               "icao":{
+                  "type":"string",
+                  "description":"Airport identifier",
+                  "required":"False"
+               },
+               "latitude":{
+                  "type":"float",
+                  "description":"Latitud Cordinate",
+                  "required":"False"
+               },
+               "longitude":{
+                  "type":"float",
+                  "description":"Longitude coordinate",
+                  "required":"False"
+               },
+               "altitude":{
+                  "type":"float",
+                  "description":"Altitude coordinate",
+                  "required":"False"
+               },
+               "timezone":{
+                  "type":"float",
+                  "description":"Timezone",
+                  "required":"False"
+               },
+               "DST":{
+                  "type":"string",
+                  "description":"DST Airport code",
+                  "required":"False"
+               },
+               "tz":{
+                  "type":"string",
+                  "description":"",
+                  "required":"False"
+               },
+               "type":{
+                  "type":"string",
+                  "description":"Type of location",
+                  "required":"False"
+               },
+               "source":{
+                  "type":"string",
+                  "description":"",
+                  "required":"False"
+               }
+            }
+         },
+         "delete":{
+            "path":"/api/entry/delete",
+            "description":"This method will delete an entry in the database.",
+            "accepts":"POST",
+            "variables":{
+               "id":{
+                  "type":"int",
+                  "description":"Unique ID of the entry",
+                  "required":"True"
+               }
+            }
+         }
+      },
+      "help":{
+         "path":"/api/help",
+         "description":"This method will show all the information about the API endpoints",
+         "accepts":"GET"
+      }
+   }
+}
