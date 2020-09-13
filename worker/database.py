@@ -27,13 +27,10 @@ class Airports(Base):
 	flag = Column(Boolean, unique=False, nullable=False)
 
 def CreateEntry(data):
-	#We take excces data
-	data.pop("action")
-	data.pop("Domain")
 	entry = Airports()
 	#Now I will populate the entry
-	for field in data:
-		setattr(entry,field,data[field])
+	for field in data[0]:
+		setattr(entry,field,data[0][field])
 	session = Session()
 	session.add(entry)
 	try:
@@ -46,15 +43,12 @@ def CreateEntry(data):
 		return Succes
 
 def UpdateEntry(data):
-	#We take excces data
-	data.pop("action")
-	data.pop("Domain")
 	entry = Airports()
 	#Now I will populate the entry only
 	#with data that is not null
-	for field in data:
+	for field in data[0]:
 		if data[field] is not None:
-			setattr(entry,field,data[field])
+			setattr(entry,field,data[0][field])
 	setattr(entry,"flag",False)
 	session = Session()
 	session.merge(entry)
@@ -68,12 +62,9 @@ def UpdateEntry(data):
 		return Succes
 
 def DeleteEntry(data):
-	#We take excces data
-	data.pop("action")
-	data.pop("Domain")
 	#As this is a Delete, I don't care about anything
 	#Except ID which is required
-	entry = Airports(id=data["id"],flag=True)
+	entry = Airports(id=data[0]["id"],flag=True)
 	session = Session()
 	session.merge(entry)
 	try:

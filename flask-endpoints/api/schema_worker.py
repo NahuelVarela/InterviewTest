@@ -18,12 +18,43 @@ class Airports(db.Model):
     source = db.Column(db.String(60), unique=False, nullable=False)
     flag = db.Column(db.Boolean, unique=False, nullable=False)
 
+
 def ReadCSV(path):
 	import csv
 	with open(path, newline='') as csvfile:
 		data_object = csv.DictReader(csvfile,delimiter=',')
 		data_object = list(data_object)
 		return data_object
+
+def GetSchema(path):
+	data_object = ReadCSV(path)
+	#For simplicity, I'm gonna read the first row and get types.
+	#I will assume that all int are also float.
+	id_col = db.Column(db.Integer,primary_key=True, unique=True)
+	string_col = db.Column(db.String(120), unique=False, nullable=False)
+	float_col = db.Column(db.Float, unique=False, nullable=False)
+	flag_col = db.Column(db.Boolean, unique=False, nullable=False)
+	example_schema = Airports()
+
+	for key in data_object[0]:
+		if key == "id":
+			setattr(example_schema,key,id_col)
+		elif isfloat(data_object[0][key]):
+			setattr(example_schema,key,float_col)
+		else:
+			setattr(example_schema,key,string_col)
+	#Lastly we add the flag col
+	setattr(example_schema,"flag",flag_col)
+	return example_schema
+
+def isfloat(value):
+  try:
+    float(value)
+    return True
+  except ValueError:
+    return False
+
+
 
 
 def UpdateDatabase(path):

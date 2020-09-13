@@ -4,7 +4,7 @@ import json
 def sendMessage(queue,body):
 	credentials = pika.PlainCredentials('guest', 'guest')
 	connection = pika.BlockingConnection(pika.ConnectionParameters(
-		host='rabbitmq',
+		host='localhost',
 		port='5672',
 		credentials=credentials
 		)
