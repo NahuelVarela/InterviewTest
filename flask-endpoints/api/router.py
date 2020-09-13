@@ -145,7 +145,7 @@ class CreateEntry(Resource):
 		message = [object_data,processing_info]
 		sendMessage("primary",message)
 		task.add()
-		return "la concha de tu madre"
+		return "done"
 
 	@api.expect(airport_model)
 	@api.marshal_with(airport_model)
@@ -160,5 +160,5 @@ class CreateEntry(Resource):
 		message = [object_data,processing_info]
 		sendMessage("primary",message)
 		task.add()
-		return "la concha de tu madre"
+		return "done"
 
