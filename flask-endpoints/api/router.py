@@ -108,7 +108,7 @@ class UpdateTable(Resource):
 		path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 		uploaded_file.save(path)
 		schema = GetSchema(path)
-
+		#I will just return an string representation on the object just to show.
 		return jsonify(str(vars(schema)))
 
 

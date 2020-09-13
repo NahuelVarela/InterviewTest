@@ -36,7 +36,7 @@ def callback(ch,method,properties,body):
 	ch.basic_ack(delivery_tag=method.delivery_tag)
 
 def sendRequest(task_information):
-	""" Basic PUT reqeust to webhook """
+	""" Basic PUT request to the webhook server for completed tasks"""
 	python_webhook_server = "http://127.0.0.1:3000/tasks"
 	r = requests.put(python_webhook_server,json={"Task-id":task_information["task-id"],"Status": "Completed"})
 
